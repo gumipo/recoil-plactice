@@ -1,6 +1,6 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { charCountState } from "../atoms/text/selector/charCount";
+import { charCountState } from "../atoms/text/selectors/charCount";
 
 const CharaterCount = () => {
   const count = useRecoilValue(charCountState);

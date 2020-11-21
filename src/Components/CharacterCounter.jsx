@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
-import { textState } from "../atoms";
+import { textState } from "../atoms/text/index";
 import CharacterCount from "./CharaterCount";
 
 const TextInput = () => {

@@ -1,6 +1,6 @@
 import { selector } from "recoil";
 
-import { textState } from "../../index";
+import { textState } from "../index";
 
 //textStateを取得
 export const charCountState = selector({

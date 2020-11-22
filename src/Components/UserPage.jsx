@@ -5,7 +5,7 @@ import UsersList from "./UsersList";
 
 const UserInput = () => {
   const [input, setInput] = useState("");
-  const [setUserNames] = useRecoilState(userNamesList);
+  const [userNames, setUserNames] = useRecoilState(userNamesList);
 
   const handleInputChange = (e) => {
     //trim: 空白削除　toLowerCase:小文字に変換
@@ -13,7 +13,7 @@ const UserInput = () => {
   };
 
   const submit = () => {
-    setUserNames(input);
+    setUserNames([...userNames, input]);
     setInput("");
   };
 
@@ -34,7 +34,9 @@ const UserPage = () => {
   return (
     <div>
       <UserInput />
-      <UsersList />
+      <React.Suspense fallback={<h1>Loding...</h1>}>
+        <UsersList />
+      </React.Suspense>
     </div>
   );
 };

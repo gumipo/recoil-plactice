@@ -1,30 +1,18 @@
 import React from "react";
-import { useRecoilState } from "recoil";
-
-import { userNamesList } from "../atoms/users/index";
-
-// const TextInput = () => {
-//   const [text, setText] = useRecoilState(textState);
-
-//   const onChange = (e) => {
-//     setText(e.target.value);
-//   };
-
-//   return (
-//     <div>
-//       <input type="text" value={text} onChange={onChange} />
-//       <br />
-//       Echo:{text}
-//     </div>
-//   );
-// };
+import { useRecoilValue } from "recoil";
+import { userNamesList } from "../atoms/users";
+import { userToFollowerMap } from "../atoms/users/selectors/followers";
 
 const UsersList = () => {
-  const [userNames, setUserNames] = useRecoilState(userNamesList);
+  const userNames = useRecoilValue(userNamesList);
+  const followerMap = useRecoilValue(userToFollowerMap);
+
   return (
     <ul>
       {userNames.map((userName) => (
-        <li key={userName}>userName</li>
+        <li key={userName}>
+          {userName} ({followerMap[userName]})
+        </li>
       ))}
     </ul>
   );

@@ -4,8 +4,8 @@ import { userNamesList } from "../index";
 import api from "../../../services/api";
 
 //textStateを取得
-export const charCountState = selector({
-  key: "charCountState",
+export const userToFollowerMap = selector({
+  key: "userToFollowerMap",
   get: async ({ get }) => {
     const _userNamesList = get(userNamesList);
 
@@ -13,12 +13,13 @@ export const charCountState = selector({
       _userNamesList.map((userName) => api.get(`/users/${userName}`))
     );
 
-    const followersMap = {};
+    const followerMap = {};
 
     responses.forEach((response) => {
       const { data: user } = response;
 
-      followersMap[user.login] = user.followers;
+      followerMap[user.login] = user.followers;
     });
+    return followerMap;
   },
 });

@@ -5,12 +5,9 @@ import Router from "./Router";
 
 const App = () => {
   return (
-    <div>
-      <RecoilRoot>
-        <h1>App</h1>
-        <Router />
-      </RecoilRoot>
-    </div>
+    <RecoilRoot>
+      <Router />
+    </RecoilRoot>
   );
 };
 
